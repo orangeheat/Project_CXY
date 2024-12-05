@@ -68,13 +68,6 @@ significant_genes <- gene_pvalues |>
 Univar <- Unicox_Detail(train, significant_genes)
 
 #lasso after unicox
-x <- as.matrix(train[ ,colnames(train) %in% gene])
-y <- as.matrix(Surv(train$OS.time,train$OS))
-set.seed(89435)
-cv_fit <- cv.glmnet(x, y, family = "cox", alpha = 1)
-fit <-  glmnet(x, y, family = "cox", alpha = 1, label = TRUE)
-
-#lasso after unicox
 x <- as.matrix(meta[ ,colnames(meta) %in% gene])
 y <- as.matrix(Surv(meta$OS.time,meta$OS))
 set.seed(89435)
